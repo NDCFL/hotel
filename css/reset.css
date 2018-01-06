@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    font-size: 12px;
+    color: #000000;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a{
+    text-decoration: none;
+    outline: none;
+    color: #666;
+    cursor: pointer;
+}
+a:hover,a:active{
+    color: #666;
+    text-decoration: none;
+}
+input{
+    outline: none;
+}
+textarea{
+    resize: none;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clearfix:after {content: "\200B";display: block;height: 0;overflow: hidden;clear: both;}
+.clearfix {*zoom: 1;}
+
+
+/* info-main */
+/* common */
+.moreLink {
+  width: 2.62rem;
+  display: none;
+  background: #49484b;
+  position: absolute;
+  right: .1rem;
+  top: 1rem;
+  z-index: 22;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.moreLink:before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: .32rem;
+  top: -0.16rem;
+  border-left: .16rem solid transparent;
+  border-right: .16rem solid transparent;
+  border-bottom: .2rem solid #49484b;
+}
+.moreLink ul.morelink-ul {
+  padding: 0 .25rem;
+}
+.moreLink ul.morelink-ul li {
+  border-bottom: 1px solid #58575a;
+  height: .84rem;
+  line-height: .84rem;
+}
+.moreLink ul.morelink-ul li img {
+  width: .39rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.moreLink ul.morelink-ul li p {
+  display: inline-block;
+  font-size: .3rem;
+  color: #ffffff;
+  text-align: left;
+  padding-left: .25rem;
+  vertical-align: middle;
+  width: 1.58rem;
+}
+
+

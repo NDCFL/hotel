@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>我的余额</title>
+	<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+	<link href="../css/app.css" rel="stylesheet" type="text/css" />
+	<link href="../css/icons-extra.css" rel="stylesheet" type="text/css" />
+	<link href="../css/vjpage.css" rel="stylesheet" type="text/css" />
+	<link href="../css/yue.css" rel="stylesheet" type="text/css" />
+</head>
+<body data-curpagename="page1"  style="background: #FFFFFF;">
+<div id="page1_jPanel1" class="mui-content-padded">
+	<div id="page1_jLabel2" class="mui-pull-right"><a>余额明细</a></div>
+	<span id="page1_jIconfont1" onclick="goto();"  class="mui-icon mui-icon-arrowleft mui-pull-left"></span>
+	<div id="page1_jLabel1">余额</div>
+	<div id="page1_jPanel2" class="">
+	
+	</div>
+	<div id="page1_jLabel3">账户余额</div>
+	<h1 id="page1_jLabel4">￥0.15</h1>
+	<div id="page1_jPanel4" class="">
+	
+	</div>
+	<button id="page1_jButton1" type="button" class="mui-btn mui-btn-success btnsize_default mui-btn-block">充值</button>
+	<div id="page1_jPanel3" class="">
+	
+	</div>
+	<button id="page1_jButton2" type="button" class="mui-btn btnsize_default mui-btn-block">提现</button>
+</div>
+<div id="page1_jAbsolutediv1" style="z-index: 800">
+	<div id="page1_jLabel5">常见问题</div>
+</div>
+
+
+</body>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script type="text/javascript">
+	var phone = localStorage.getItem("phone");
+	if(phone==null || phone==''){
+		mui.toast("你还未登录，请登录！",{ duration:'long', type:'div' })
+		window.location.href="../login.html";
+	}
+		mui.init({
+			beforeback: function() {
+		　　　　 //获得父页面的webview
+		        var list = plus.webview.currentWebview().opener();
+		　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+		        mui.fire(list, 'refresh');
+		        //返回true,继续页面关闭逻辑
+		        return true;
+		   },
+			gestureConfig:{
+				tap: true,
+				doubletap: true,
+				longtap: true,
+				hold: true,
+				drag: true,
+				swipe: true,
+				release: true
+			}
+	});
+</script>
+<script>
+	window.addEventListener('refresh', function(e){//执行刷新
+		ocation.reload();
+	});
+	function goto(){
+		mui.back();
+		
+	}
+	
+</script>
+</html>

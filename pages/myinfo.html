@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>个人资料</title>
+	<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+	<link href="../css/app.css" rel="stylesheet" type="text/css" />
+	<link href="../css/icons-extra.css" rel="stylesheet" type="text/css" />
+	<link href="../css/vjpage.css" rel="stylesheet" type="text/css" />
+	<link href="../css/config.css" rel="stylesheet" type="text/css" />
+	<link href="../css/cropper.min.css" rel="stylesheet" type="text/css"/>
+</head>
+<body data-curpagename="page7" >
+<header id="page7_jPanel1" class="mui-bar mui-bar-nav">
+	<span id="page7_jIconfont1" class="mui-icon mui-icon-contact"></span>
+	<h1 id="page7_jLabel1" class="mui-title">个人信息</h1>
+	<span id="page7_jIconfont2" class="mui-icon mui-icon-gear mui-pull-right"></span>
+</header>
+<div id="page7_jPanel2" class="mui-content">
+	<div id="page7_jPanel3" class="mui-content-padded">
+		<img id="page7_jImages1" class="mui-pull-right" src="../images/default.png" style="border-radius: 100%;"/>
+		<map name="page7_jImages1_map" id="page7_jImages1_map">
+		</map>
+		<div id="page7_jPanel11" class=" mui-pull-left">
+		
+		</div>
+		<h3 id="page7_jLabel2" ></h3>
+		<div id="page7_jLabel3">信用分数：97.5</div>
+	</div>
+	<div id="page7_jPanel4" class="mui-card" style="margin-top: 10px;">
+		<div id="page7_jPanel5" class="mui-card-content">
+			<div class="mui-card-content-inner">
+			<ul id="page7_jList1" class="mui-table-view mui-table-view-chevron">	
+				<li class="mui-table-view-cell">
+					<a id="page7_jLinkAarrow1" class="mui-navigate-right">
+						<div id="page7_jLabel4" class="mui-pull-left">昵称</div>
+						<div id="page7_jLabel5" class="mui-pull-right" ></div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="page7_jLinkAarrow2" class="mui-navigate-right">
+						<div id="page7_jLabel6" class="mui-pull-left">类型</div>
+						<div id="page7_jLabel7" class="mui-pull-right"></div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="page7_jLinkAarrow3" class="mui-navigate-right">
+						<div id="page7_jLabel8" class="mui-pull-left">银行</div>
+						<div id="page7_jLabel9" class="mui-pull-right"></div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="page7_jLinkAarrow3" class="mui-navigate-right">
+						<div id="page7_jLabe_20" class="mui-pull-left">银行卡号</div>
+						<div id="page7_jLabe_l9" class="mui-pull-right"></div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="page7_jLinkAarrow4" class="mui-navigate-right">
+						<div id="page7_jLabel10" class="mui-pull-left">实名认证</div>
+						<div id="page7_jLabel11" class="mui-pull-right" id="sm">已认证</div>
+					</a>
+				</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+	<div id="page7_jPanel6" class="mui-card" style="margin-top: 20px;">
+		<div id="page7_jPanel7" class="mui-card-content">
+			<div class="mui-card-content-inner">
+			<ul id="page7_jList2" class="mui-table-view mui-table-view-chevron">	
+				<li class="mui-table-view-cell">
+					<a id="page7_jLinkAarrow5" class="mui-navigate-right">
+						<div id="page7_jLabel12" class="mui-pull-left">手机号</div>
+						<div id="page7_jLabel13" class="mui-pull-right" id="phone"></div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="page7_jLinkAarrow6" class="mui-navigate-right">
+						<div id="page7_jLabel14" class="mui-pull-left">签约时间</div>
+						<div id="page7_jLabel15" class="mui-pull-right"></div>
+					</a>
+				</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+	<div id="page3_jPanel3" class="mui-content-padded" style="margin-top: 20px;">
+		<button id="outlogin" type="button" style="margin-top: 7px;" class="mui-btn mui-btn-success btnsize_default mui-btn-block">退出登录</button>
+	</div>
+</div>
+
+
+</body>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/cropper.min.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+<script type="text/javascript">
+	mui.init({
+		gestureConfig:{
+			tap: true,
+			doubletap: true,
+			longtap: true,
+			hold: true,
+			drag: true,
+			swipe: true,
+			release: true
+		}
+	});
+	
+
+</script>
+<script>
+	$("#outlogin").click(function(){
+		localStorage.setItem("info","");
+		localStorage.setItem("phone","");
+		window.location.href="../login.html";
+	});
+	
+</script>
+<script>
+	
+	var info = JSON.parse(localStorage.getItem("info"));
+	$("#page7_jLabel2").html(info.bankAccountName);
+	$("#page7_jLabel5").html(info.bankAccountName);
+	var leixing = "业主";
+	$("#page7_jLabel7").html(leixing);
+	$("#page7_jLabel9").html(info.bankName);
+	$("#page7_jLabe_l9").html(info.bankAccountNo);
+	$("#page7_jLabel13").html(info.phone);
+	$("#page7_jLabel15").html(getdate(info.createTime));
+	function getdate(value){
+		var date = new Date(parseInt(value));
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        var h = date.getHours();
+        var mi = date.getMinutes();
+        var ss = date.getSeconds();
+        return y + '-' + m + '-' + d;
+	}
+</script>
+<script>
+	mui.plusReady(function(){
+    document.getElementById('page7_jImages1').addEventListener('tap',function(){
+        if(mui.os.plus){
+            var a=[{
+                title:'拍照'
+            },{
+                title:'从手机相册选择'
+            }];
+            plus.nativeUI.actionSheet({
+                title:'修改头像',
+                cancel:'取消',
+                buttons:a
+            },function(b){
+                switch(b.index){
+                    case 0:
+                        break;
+                    case 1:
+                        //拍照
+                        getImages();
+                        break;
+                    case 2:
+                        //打开相册
+                        galleryImages();
+                        break;
+                    default:
+                        break;
+                }
+            },false);   
+        }
+    });
+
+    //拍照
+    function getImages(){
+        var mobileCamera=plus.camera.getCamera();
+        mobileCamera.captureImage(function(e){
+            plus.io.resolveLocalFileSystemURL(e,function(entry){
+                var path=entry.toLocalURL()+'?version='+new Date().getTime();
+                uploadHeadImg(path);
+            },function(err){
+                console.log("读取拍照文件错误");
+            });
+        },function(e){
+            console.log("er",err);
+        },function(){
+            filename:'_doc/head.png';
+        });
+    }
+
+    //从本地相册选择
+    function galleryImages(){
+        console.log("你选择了从相册选择");
+        plus.gallery.pick(function(a){
+            plus.io.resolveLocalFileSystemURL(a,function(entry){
+                plus.io.resolveLocalFileSystemURL('_doc/',function(root){
+                    root.getFile('head.png',{},function(file){
+                        //文件已经存在
+                        file.remove(function(){
+                            console.log("文件移除成功");
+                            entry.copyTo(root,'head.png',function(e){
+                                var path=e.fullPath+'?version='+new Date().getTime();
+                                uploadHeadImg(path);
+                            },function(err){
+                                console.log("copy image fail: ",err);
+                            });
+                        },function(err){
+                            console.log("删除图片失败：（"+JSON.stringify(err)+")");
+                        });
+                    },function(err){
+                        //打开文件失败
+                        entry.copyTo(root,'head.png',function(e){
+                            var path=e.fullPath+'?version='+new Date().getTime();
+                            uploadHeadImg(path);
+                        },function(err){
+
+                            console.log("上传图片失败：（"+JSON.stringify(err)+")");
+                        });
+                    });
+                },function(e){
+                    console.log("读取文件夹失败：（"+JSON.stringify(err)+")");
+                });
+            });
+        },function(err){
+            console.log("读取拍照文件失败: ",err);
+        },{
+            filter:'image'
+        });
+    };
+
+    //上传图片
+    function uploadHeadImg(imgPath){
+        //选中图片之后，头像当前的照片变为选择的照片
+        var mainImg=document.getElementById('userImg');
+        mainImg.src=imgPath;
+
+
+        var images=new Image();
+        images.src=imgPath;
+        var imgData=getBase64Image(images);
+        mui.ajax('http://127.0.0.1/uploadHeadImg',{
+            data:{
+                'imgDatas':imgData
+            },
+            dataType:'json',//服务器返回json格式数据
+            type:'post',//HTTP请求类型
+            timeout:10000,//超时时间设置为10秒；
+            success:function(data){
+                if(data.status=='1'){
+                    mui.alert('上传成功！');
+                }
+            },
+            error:function(xhr,type,errorThrown){
+                if(type=='timeout'){
+                    mui.alert('服务器连接超时，请稍后再试');
+                }   
+            }
+        });
+    }
+
+
+    //压缩图片转成base64
+    function getBase64Image(img){
+        var canvas=document.createElement("canvas");
+        var width=img.width;
+        var height=img.height;
+        if(width>height){
+            if(width>100){
+                height=Math.round(height*=100/width);
+                width=100;
+            }
+        }else{
+            if(height>100){
+                width=Math.round(width*=100/height);
+            }
+            height=100;
+        }
+
+        canvas.width=width;
+        canvas.height=height;
+        var ctx=canvas.getContext('2d');
+        ctx.drawImage(img,0,0,width,height);
+
+        var dataUrl=canvas.toDataURL('image/png',0.8);
+        return dataUrl.replace('data:image/png:base64,','');
+    }   
+});
+</script>
+</html>

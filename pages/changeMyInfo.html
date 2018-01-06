@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>个人信息</title>
+	<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+	<link href="../css/app.css" rel="stylesheet" type="text/css" />
+	<link href="../css/icons-extra.css" rel="stylesheet" type="text/css" />
+	<link href="../css/mui.picker.css" rel="stylesheet" type="text/css" />
+	<link href="../css/mui.poppicker.css" rel="stylesheet" type="text/css" />
+	<link href="../css/mui.picker.min.css" rel="stylesheet" type="text/css" />
+	<link href="../css/vjpage.css" rel="stylesheet" type="text/css" />
+	<link href="../css/config.css" rel="stylesheet" type="text/css" />
+</head>
+<body data-curpagename="page11" >
+<header id="page11_jPanel1" class="mui-bar mui-bar-nav">
+	<span id="page11_jIconfont1" class="mui-icon mui-icon-arrowleft mui-pull-left"></span>
+	<div id="page11_jPanel11" class=" mui-pull-left">
+	
+	</div>
+	<span id="page11_jIconfont5" class="mui-icon mui-icon-closeempty mui-pull-left"></span>
+	<h1 id="page11_jLabel1" class="mui-title">个人信息</h1>
+</header>
+<div id="page11_jPanel5" class="mui-content">
+	<form id="page11_jHtmlForm1" name="page11_jHtmlForm1" method="post" action="" enctype="multipart/form-data">
+		<input type="hidden" name="phone" id="phone" />
+		<div id="page11_jPanel4" class="mui-input-group">
+			<div id="page11_jEdit1" class="mui-input-row">
+				<label>真实姓名</label>
+				<input type="text" placeholder="真实姓名" name="linkman">
+			</div>
+		</div>
+		<div id="page11_jPanel7" class="">
+		</div>
+		<div id="page11_jPanel8" class="mui-input-group">
+			<div id="page11_jEdit2" class="mui-input-row">
+				<label>名称</label>
+				<input type="text" placeholder="请输入账号名称" name="name">
+			</div>
+			<div id="page11_jEdit3" class="mui-input-row">
+				<label>固定电话</label>
+				<input type="text" placeholder="请输入固定电话" name="phone">
+			</div>
+		</div>
+		<div id="page11_jPanel7" class="">
+		</div>
+		<div id="page11_jPanel8" class="mui-input-group">
+			<div id="page11_jEdit3" class="mui-input-row">
+				<label>开户行</label>
+				<input type="text" name="bank" placeholder="请输入开户行（必填）">
+			</div>
+			<div id="page11_jEdit4" class="mui-input-row">
+				<label>银行账号</label>
+				<input type="text" name="bankcard" placeholder="请输入银行账号（必填）">
+			</div>
+		</div>
+		<div id="page11_jPanel7" class="">
+		</div>
+		<ul id="page11_jList1" class="mui-table-view mui-table-view-chevron list">	
+			<li class="mui-table-view-cell mui-media">
+				<a id="page11_jLinkAarrow1" class="imageup 1">
+					<img id="headimg" class="headimg" src='../images/sfzz.png'  height="150"  width="110%">
+				</a>
+				<input type="hidden"  name="sfzz" id="img0" />
+			</li>
+			<li class='mui-table-view-cell mui-media'>
+				<a id="page11_jLinkAarrow3" class="imageup 2">
+                 <img id="headimg" class="headimg" name="sfzfm"  src='../images/sfzfm.png'  height="150"  width="110%">
+                </a>
+                <input type="hidden"  name="sfzf" id="img1" />
+            </li>
+            <li class='mui-table-view-cell mui-media' id"qy">
+            	<a id="page11_jLinkAarrow2" class="imageup 3">
+                	<img id="headimg" class="headimg" src='../images/sfzfm.png'  height="150"  width="110%">
+                </a>
+                <input type="hidden"  name="yyzz" id="img2" />
+            </li>
+          
+		</ul>
+		<div id="page11_jPanel7" class="">
+		</div>
+		<div id="page11_jPanel10" class="">
+			<div id="page11_jPanel12" class="">
+			</div>
+			<div id="page11_jPanel13" class="vjcenterpanel Panel_c">
+				<button id="page11_jButton1" type="button" class="mui-btn mui-btn-primary btnsize_default mui-btn-block">提交</button>
+			</div>
+		</div>
+	</form>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/mui.picker.js"></script>
+<script type="text/javascript" src="../js/mui.poppicker.js"></script>
+<script type="text/javascript" src="../js/mui.picker.min.js"></script>
+<script type="text/javascript" src="../js/jquery.formautoFill.js"></script>
+<script type="text/javascript">
+	var phone = localStorage.getItem("phone");
+	if(phone==null || phone==''){
+		mui.toast("你还未登录，请登录！",{ duration:'long', type:'div' })
+		window.location.href="../login.html";
+	}
+	$("#phone").val(phone);
+	$.ajax({
+        url : rootpath+"/contractMaster/login",
+        type : "Post",
+        data :{
+        	phone:$("#phone").val()
+        },
+        dataType:"JSON",
+        ascy:false,
+        success : function(data) {
+        	 $("#page11_jHtmlForm1").autofill(data);
+        },
+        error : function(XMLHttpRequest, textStatus, errorThrown) {
+            mui.toast("发生错误!"+textStatus,{ duration:'long', type:'div' })
+        }
+    });	
+</script>
+<script> 
+         //扩展API完成后执行的操作
+    function plusReady(){               
+     //给选中的li增加判别class
+        $(".list li").on("tap",".imageup",function(){
+        var $li = $(this).parents("li");
+        	console.log($($li).text())                
+        	$li.addClass("selectLi");
+        	$li.siblings().removeClass("selectLi");              
+         	page.imgUp();
+        })
+    } 
+    //弹出系统按钮选择框
+    var page=null; 
+    page={ 
+        imgUp:function(){ 
+            var m=this; 
+           /* console.log(m);*/
+            plus.nativeUI.actionSheet({cancel:"取消",buttons:[ 
+                {title:"拍照"}, 
+                {title:"从相册中选择"} 
+            ]}, function(e){//1 是拍照  2 从相册中选择 
+                switch(e.index){ 
+                    case 1:appendByCamera();break; 
+                    case 2:appendByGallery();break; 
+                } 
+            }); 
+        } 
+    } 
+    // 拍照添加文件
+    function appendByCamera(){
+        plus.camera.getCamera().captureImage(function(e){
+            plus.io.resolveLocalFileSystemURL(e, function(entry) {
+                var path = entry.toLocalURL();
+                var indexa = liIndex()
+                $(".headimg")[indexa].src = path;  
+                uploadHead(path,indexa);
+            }, function(e) {
+                mui.toast("读取拍照文件错误：" + e.message);
+            });
+ 
+        });   
+    }
+    // 从相册添加文件
+    function appendByGallery(){
+        plus.gallery.pick(function(path){
+            var indexa = liIndex();
+            console.log(indexa);
+            $(".headimg")[indexa].src = path;
+            uploadHead(path,indexa);
+        });
+    }
+    //服务端接口路径
+    var server = rootpath+"/contractMaster/updateInfo";
+    //获取图片元素
+    var files = document.getElementById('headimg');
+    // 上传文件
+     function upload(){
+        var wt=plus.nativeUI.showWaiting();
+        alert(wt);
+        var task=plus.uploader.createUpload(server,
+            {method:"POST"},
+            function(t,status){ //上传完成
+                if(status==200){
+                    alert("上传成功："+t.responseText);
+                    wt.close(); //关闭等待提示按钮
+                }else{
+                    alert("上传失败："+status);
+                    wt.close();//关闭等待提示按钮
+                }
+            }
+        );  
+        //添加其他参数
+        task.addData("name","test");
+        task.addFile(files.src,{key:"dddd"});
+        task.start();
+    } 
+     //判断点击的是上传的第几个li             
+	function liIndex(){
+	    var lis = $(".list").children();
+	    for(var i = 0; i < lis.length;i++){ 
+	        console.log($(lis[i]).attr("class"))
+	        var lisClass = $(lis[i]).attr("class").split(" ");
+	        if(lisClass[2] == "selectLi"){
+	            console.log(i);
+	            return i;
+	        }
+	    }
+	}
+  //扩展API是否准备好，如果没有准备好则监听plusReady 
+	if(window.plus){
+	    plusReady();
+	}else{
+	    document.addEventListener("plusready",plusReady,false);
+	}
+	function uploadHead(imgPath,index) {
+		console.log("imgPath = " + imgPath);
+		var image = new Image();
+		image.src = imgPath;
+		image.onload = function() {
+		var imgData = getBase64Image(image);
+		console.log("imgData"+imgData);
+		/*在这里调用上传接口*/
+		$.ajax({
+			url:rootpath+"/contractMaster/save",
+			data:{
+				"imgBase64Data":imgData
+			},
+			dataType: 'json',
+			type: 'post',
+			timeout: 10000,
+			success: function(data) {
+				var infoVal = data.message+"";
+				alert(infoVal.indexOf("成功"));
+				if(infoVal.indexOf("成功")>=0){
+					$("#img"+index).val(infoVal.substring(infoVal.indexOf("!")+1,infoVal.length));
+				}
+			},
+			error: function(xhr, type, errorThrown) {
+				console.log(errorThrown);
+				mui.toast('网络异常，请稍后再试！');
+			}
+		});
+	}
+	function getBase64Image(img) {
+		//绘制图形
+		var canvas = document.createElement("canvas");
+		var width = img.width;
+		console.log(width);
+		var height = img.height;
+		console.log(height);
+		// 这里对图片大于300*400的进行压缩
+		if(width > height) {
+			if(width > 300) {
+				height = Math.round(height *= 300 / width);
+				width = 300;
+			}
+		} else {
+			if(height > 400) {
+				width = Math.round(width *= 400 / height);
+				height = 400;
+			}
+		}
+		canvas.width = width;/*设置新的图片的宽度*/
+		canvas.height = height; /*设置新的图片的长度*/
+		var ctx = canvas.getContext("2d");
+		ctx.drawImage(img, 0, 0, width, height); /*绘图*/
+		var dataURL = canvas.toDataURL("image/png", 0.5);
+		console.log(dataURL);
+		return dataURL.replace("data:image/png;base64,", "");
+	}
+	}
+</script> 
+<script>
+	var type = localStorage.getItem("type");
+	//个人就移除最后一个li营业执照的上传
+	if(type==0){
+		$("ul li:eq(2)").remove()
+	}
+	$("#page11_jButton1").click(function(){
+		alert($("#page11_jHtmlForm1").serialize());
+		$.ajax({
+	        url : rootpath+"/contractMaster/updateInfo",
+	        type : "Post",
+	        data : $("#page11_jHtmlForm1").serialize(),
+	        dataType:"JSON",
+	        ascy:false,
+	        success : function(data) {
+	        	alert(data.message.indexOf("成功"));
+	        	if(data.message.indexOf("成功")>-1){
+	        		localStorage.setItem("phone",$("#phone").val());
+					window.location.href="../main.html";
+				}else{
+					mui.toast(data.message,{ duration:'long', type:'div' })
+					return;
+				}
+	        	
+	        },
+	        error : function(XMLHttpRequest, textStatus, errorThrown) {
+	            mui.toast("发生错误!"+textStatus,{ duration:'long', type:'div' })
+	        }
+	    });	
+	});
+</script>
+</html>

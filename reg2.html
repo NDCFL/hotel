@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>修改密码</title>
+	<link href="css/mui.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/app.css" rel="stylesheet" type="text/css" />
+	<link href="css/icons-extra.css" rel="stylesheet" type="text/css" />
+	<link href="css/vjpage.css" rel="stylesheet" type="text/css" />
+	<link href="css/config.css" rel="stylesheet" type="text/css" />
+</head>
+<body data-curpagename="page2" >
+<header id="page2_jPanel1" class="mui-bar mui-bar-nav">
+	<span id="page2_jIconfont1" class="mui-icon mui-icon-arrowleft"></span>
+	<h1 id="page2_jLabel1" class="mui-title">设置密码</h1>
+</header>
+<div id="page2_jPanel2" class="mui-content">
+	<div id="page2_jPanel3" class="mui-content-padded">
+		<form id="page2_jHtmlForm1" name="page2_jHtmlForm1" method="post" action="" class="mui-input-group">
+			<div id="page2_jEdit3" class="mui-input-row mui-password">
+				<input type="password" name="password" id="first" class="mui-input-password" placeholder="请输入密码">
+			</div>
+			<div id="page2_jEdit4" class="mui-input-row mui-password">
+				<input type="password"  id="two" class="mui-input-password" placeholder="请输入确认密码">
+			</div>
+			<input type="hidden" name="phone" id="phone" />
+			<input type="hidden" name="type" id="0"/>
+			<input type="hidden" name="codeType" id="codeType"/>
+		</form>
+		<div id="page2_jPanel4" class="">
+		
+		</div>
+		<button id="page2_jButton1" type="button" class="mui-btn mui-btn-success btnsize_default mui-btn-block">注册</button>
+		<div id="page2_jPanel5" class="">
+			<div id="page2_jLabel2" class="mui-pull-left">找回密码</div>
+			<div id="page2_jLabel3" class="mui-pull-right">已有账号</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/mui.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript">
+		
+	mui.init({
+		gestureConfig:{
+			tap: true,
+			doubletap: true,
+			longtap: true,
+			hold: true,
+			drag: true,
+			swipe: true,
+			release: true
+		}
+	});
+
+</script>
+<script>
+	var phone = localStorage.getItem("phone");
+	$("#phone").val(phone);
+	if(phone==null || phone==''){
+		mui.toast("你还未登录，请登录！",{ duration:'long', type:'div' })
+		window.location.href="../login.html";
+	}
+	if(localStorage.getItem("type")==undefined){
+		$("#type").val(0);
+	}else{
+		$("#type").val(localStorage.getItem("type"));
+	}
+	$("#codeType").val(localStorage.getItem("codeType"));
+	if($("#codeType").val()=='findPwd'){
+		$("#page2_jButton1").html("确认修改");
+	}
+	$("#page2_jButton1").click(function(){
+		var first = $("#first").val();
+		var two = $("#two").val();
+		if(first==''){
+			mui.toast("请输入密码",{ duration:'long', type:'div' })
+			return;
+		}
+		if(two==''){
+			mui.toast("请输入确认密码",{ duration:'long', type:'div' })
+			return;
+		}
+		if(first!=two){
+			mui.toast("两次密码输入不一致",{ duration:'long', type:'div' })
+			return;
+		}
+		$.ajax({
+	        url : rootpath+"/contractMaster/register",
+	        type : "Post",
+	        data : $("#page2_jHtmlForm1").serialize(),
+	        dataType:"JSON",
+	        ascy:false,
+	        success : function(data) {
+	        	if(data.message.indexOf("成功")>0){
+					window.location.href="main.html";
+				}else{
+					mui.toast(data.message,{ duration:'long', type:'div' })
+					return;
+				}
+	        },
+	        error : function() {
+	            mui.toast("发生错误!",{ duration:'long', type:'div' })
+	            return;
+	        }
+	    });		
+	});
+</script>
+</html>
